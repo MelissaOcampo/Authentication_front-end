@@ -9,6 +9,9 @@ export const Navbar = () => {
 			<Link to="/">
 				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Star_wars2.svg/1200px-Star_wars2.svg.png" style={{width:"90px"}} alt=""/>
 			</Link>
+			<Link to="/demo">
+						{/* <button className="btn btn-primary">Check the Context in action</button> */}
+					</Link>
 			<div className="btn-group">
   <button type="button" className="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
     Favorites
