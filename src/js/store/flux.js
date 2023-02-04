@@ -21,8 +21,41 @@ const getState = ({
                     auth: false
                 })
             },
+            signup: (userName, userSurname, userEmail, userPassword) => {
+                fetch('https://3000-melissaocam-authenticat-vlkhe5rb6ui.ws-us85.gitpod.io/signup', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                            // 'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: JSON.stringify({
+                            "name": userName,
+                            "surname": userSurname,
+                            "email": userEmail,
+                            "password": userPassword
+                        }) // body data type must match "Content-Type" header
+                    })
+                    .then((response) => {
+                        console.log(response.status);
+                        if (response.status === 200) {
+                            setStore({
+                                auth: true
+                            })
+                        }
+                        return response.json()
+                    })
+                    .then((data) => {
+                        console.log(data)
+                        if (data.msg === "Bad email or password") {
+                            alert(data.msg)
+                        }
+                        localStorage.setItem("token", data.access_token)
+                    })
+                    .catch((err) => console.log(err))
+            },
+
             login: (userEmail, userPassword) => {
-                fetch('https://3000-melissaocam-authenticat-3gkcdc6vcve.ws-us84.gitpod.io/login', {
+                fetch('https://3000-melissaocam-authenticat-vlkhe5rb6ui.ws-us85.gitpod.io/login', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -51,6 +84,7 @@ const getState = ({
                     })
                     .catch((err) => console.log(err))
             },
+
             obtenerInfoPersonajes: () => {
                 fetch("https://www.swapi.tech/api/people/")
                     .then(res => res.json())

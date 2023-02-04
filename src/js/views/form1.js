@@ -4,22 +4,53 @@ import {Navigate} from "react-router-dom"
 
 
 
-const Form1 = () => {
 
+export const Form1 = () => {
+   const[name,setName]=useState("")
+   const[surname,setSurname]=useState("")
    const[email,setEmail]=useState("")
    const[password,setPassword]=useState("")
    const {store, actions}=useContext(Context)
 
-   function enviarDatos(e) {
+  function enviarDatos(e) {
     e.preventDefault()
-    actions.login(email,password)
+    actions.signup(name,surname,email,password)
+    setName("")
+    setSurname("")
     setEmail("")
     setPassword("")
+    console.log (name,surname,email,password)
     }
     return (
         <>
         {store.auth === true ? <Navigate to="/demo"/>:
         <form className="w-50 mx-auto" onSubmit={enviarDatos}>
+          <div>
+          <label htmlFor="exampleInputName" className="form-label">
+          Name 
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="exampleInputName"
+              aria-describedby="nameHelp"
+              value={name}
+              onChange={(e)=>setName(e.target.value)}
+            />
+          </div>
+          <div>
+          <label htmlFor="exampleInputSurname" className="form-label">
+          Surname 
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="exampleInputSurname"
+              aria-describedby="surnameHelp"
+              value={surname}
+              onChange={(e)=>setSurname(e.target.value)}
+            />
+          </div>
           <div className="mb-3 container">
             <label htmlFor="exampleInputEmail1" className="form-label">
               Email address
@@ -54,4 +85,3 @@ const Form1 = () => {
       );
     };
     
-    export default Form1;

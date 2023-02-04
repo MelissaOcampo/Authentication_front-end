@@ -6,7 +6,7 @@ import {Navigate} from "react-router-dom"
 
 
 
-const Form = () => {
+export const Form = () => {
 //useState para definir dos variables de estado: email y password.
    const[email,setEmail]=useState("") 
    const[password,setPassword]=useState("")
@@ -18,13 +18,14 @@ const Form = () => {
     actions.login(email,password)
     setEmail("")
     setPassword("")
+    console.log (email,password)
     }
 
     
     // Se devuelve un componente formulario que permite al usuario ingresar su correo electrónico y contraseña. Si el valor de "store.auth" es verdadero, el componente redirigirá a la página "/demo". Si no, se mostrará el formulario para que el usuario pueda ingresar su información de inicio de sesión.
     return (
         <>
-        {store.auth === true ? <Navigate to="/demo"/>:
+        {store.auth === true ? <Navigate to="/"/>:
         <form className="w-50 mx-auto" onSubmit={enviarDatos}>
           <div className="mb-3 container">
             <label htmlFor="exampleInputEmail1" className="form-label">
@@ -59,6 +60,4 @@ const Form = () => {
         
       );
     };
-    
-    export default Form;
     

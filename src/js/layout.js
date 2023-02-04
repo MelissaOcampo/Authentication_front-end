@@ -10,8 +10,8 @@ import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer"; 
-import { Vista } from "./views/Vista";
-import { Registrar } from "./views/Registrar.jsx";
+import { Form } from "./views/form";
+import { Form1 } from "./views/form1";
 
 
 const Layout = () => { 
@@ -27,8 +27,8 @@ const Layout = () => {
 					<Navbar />
 					<Routes>
 						<Route path="/" element={<Home />} />
-						<Route path="/vista" element={<Vista />} />
-						<Route path="/registrar" element={<Registrar />} />
+						<Route path="/form" element={<Form />} />
+						<Route path="/form1" element={<Form1 />} />
 						<Route path="/demo" element={<Demo />} />
 						<Route path="/detalles" element={<Detalles />} />
 						<Route path="/single/:theid" element={<Single />} />
