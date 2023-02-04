@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-
+//Importación de componentes y vistas que se usarán en la aplicación.
 import { Home } from "./views/home";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
@@ -11,26 +11,30 @@ import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer"; 
 import { Vista } from "./views/Vista";
+import { Registrar } from "./views/Registrar.jsx";
 
-//create your first component
-const Layout = () => {
-	//the basename is used when your project is published in a subdirectory and not in the root of the domain
-	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
+
+const Layout = () => { 
 	const basename = process.env.BASENAME || "";
 
 	return (
-		<div>
-			<BrowserRouter basename={basename}>
+		<div> 
+			 {/* Dentro de la función, se crea un objeto de navegación de "BrowserRouter" y se establece su atributo "basename". */}
+			<BrowserRouter basename={basename}> 
+			{/* Dentro del objeto de navegación, se envuelve todo en un componente "ScrollToTop". se usa para hacer que la página se desplace hacia la parte superior cuando el usuario navega a una nueva ruta. */}
 				<ScrollToTop>
+				{/* Se renderiza un componente "Navbar" y se definen las diferentes rutas de la aplicación utilizando el componente "Routes" y los componentes "Route". Cada ruta establece un camino y el componente asociado que se renderizará cuando el usuario acceda a ese camino. */} 
 					<Navbar />
 					<Routes>
 						<Route path="/" element={<Home />} />
-						<Route path="/login" element={<Vista />} />
+						<Route path="/vista" element={<Vista />} />
+						<Route path="/registrar" element={<Registrar />} />
 						<Route path="/demo" element={<Demo />} />
 						<Route path="/detalles" element={<Detalles />} />
 						<Route path="/single/:theid" element={<Single />} />
 						<Route path="*" element={<h1>Not found!</h1>} />
 					</Routes>
+					{/* Tambien se renderiza un componente en este caso el "Footer". */}
 					<Footer />
 				</ScrollToTop>
 			</BrowserRouter>
