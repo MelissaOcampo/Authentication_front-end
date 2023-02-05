@@ -22,7 +22,7 @@ const getState = ({
                 })
             },
             signup: (userName, userSurname, userEmail, userPassword) => {
-                fetch('https://3000-melissaocam-authenticat-vlkhe5rb6ui.ws-us85.gitpod.io/signup', {
+                fetch('https://3000-melissaocam-authenticat-nbfu7mdsg20.ws-us85.gitpod.io/signup', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -55,7 +55,7 @@ const getState = ({
             },
 
             login: (userEmail, userPassword) => {
-                fetch('https://3000-melissaocam-authenticat-vlkhe5rb6ui.ws-us85.gitpod.io/login', {
+                fetch('https://3000-melissaocam-authenticat-nbfu7mdsg20.ws-us85.gitpod.io/login', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
